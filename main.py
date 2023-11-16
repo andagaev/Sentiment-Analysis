@@ -25,11 +25,13 @@ with open("negative_words.txt") as pos_f:
     for lin in pos_f:
         if lin[0] != ';' and lin[0] != '\n':
             negative_words.append(lin.strip())
+
 '''
 Step 2:
 Define a function called get_pos which takes one parameter, a string which represents one or more sentences,
 and calculates how many words in the string are considered positive words.
 '''
+
 def get_pos(s):
     str_lst = strip_punctuation(s).lower().split(" ")
     count = 0
@@ -53,7 +55,9 @@ def get_neg(s):
         if word in negative_words:
             count += 1
     return count
+
 '''
+Step 4:
 Open the file project_twitter_data.csv whicn contains:
 - text of a tweet
 - number of retweets of that tweet
@@ -66,6 +70,7 @@ Create a csv file called resulting_data.csv, which contains:
 - Negative Score (which is how many angry words are in the tweet)
 - Net Score (how positive or negative the text is overall) for each tweet.
 '''
+
 with open("project_twitter_data.csv", "r") as input_file, open("resulting_data.csv", "w") as output_file:
     header = input_file.readline()
     output_file.write("Number of Retweets, Number of Replies, Positive Score, Negative Score, Net Score")
